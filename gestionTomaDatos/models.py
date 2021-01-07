@@ -32,6 +32,6 @@ class Estudio(models.Model):
 	invResp=models.CharField(max_length=30)
 	protocoloEstudio=models.CharField(max_length=30) 
 	participanteEstudio=models.IntegerField()
-	efectuado=models.BooleanField()
+	efectuado=models.BooleanField() # este es un comentario
 
 
