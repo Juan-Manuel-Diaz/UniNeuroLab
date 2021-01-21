@@ -15,7 +15,16 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from gestionTomaDatos import views
+from gestionProcesamientoDatos import views
+from gestionProtocolos_y_Estudios import views
+from gestionResultadosProtocolo import views
+from gestionPlanificacion_y_Desarrollo_Proyectos_Nuevos import views
+from gestionNeuroLab_Panel_de_Control import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    #path('busquedaEstudios/', views.busquedaEstudios),
+    #path("buscar/",views.buscar),
+    #path("contacto/", views.contacto),
 ]

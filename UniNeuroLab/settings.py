@@ -37,7 +37,13 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    
     'gestionTomaDatos', 
+    'gestionProcesamientoDatos', #aca incorporo la nueva APP
+    'gestionProtocolos_y_Estudios',
+    'gestionResultadosProtocolo',
+    'gestionPlanificacion_y_Desarrollo_Proyectos_Nuevos',
+    'gestionNeuroLab_Panel_de_Control',
 ]
 
 MIDDLEWARE = [
@@ -77,7 +83,14 @@ WSGI_APPLICATION = 'UniNeuroLab.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
+        #'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        #'NAME': 'participantes_estudios',
+        #'USER': 'juanpostgres',
+        #'PASSWORD':'neurociencias17',
+        #'HOST': '127.0.0.1',
+        #'DATABASE_PORT':'5432'
+        
     }
 }
 
@@ -119,3 +132,11 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
 STATIC_URL = '/static/'
+
+
+EMAIL_BACKEND="django.core.mail.backends.smtp.EmailBackend"
+EMAIL_HOST="smtp.gmail.com"
+EMAIL_USE_TLS= True
+EMAIL_PORT=587
+EMAIL_HOST_USER="diazfloressuyai@gmail.com"
+EMAIL_HOST_PASSWORD="lks230508"
