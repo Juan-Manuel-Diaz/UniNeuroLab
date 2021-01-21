@@ -1,0 +1,26 @@
+<html>
+	<head>
+		<title>Los Resultados de tu busqueda fueron: </title>
+	
+	</head>
+	<body>
+		<p> Estas buscando: <strong>{{query}}</strong></p>
+		
+		{% if estudioBDrecuperado %}
+			<p>Estudios encontrados: {{ estudioBDrecuperado|length}} estudios</p>
+			<ul>
+				{% for e in estudioBDrecuperado %}
+					<li>
+						{{e.nombre}}
+					</li>
+				{% endfor %}
+			</ul>
+		{% else %}
+			<p>No existe ese estudio!! </p>
+			
+		{% endif %}
+	
+	</body>
+
+
+</html>
