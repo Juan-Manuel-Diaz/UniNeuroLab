@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # coding: utf-8
-#prueba de git para hackaton
+#Rama JuanRafaDani
 # In[1]:
 
 from PyQt5.QtWidgets import (QApplication, QMainWindow, QVBoxLayout,
