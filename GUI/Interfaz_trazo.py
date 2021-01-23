@@ -16,7 +16,6 @@ import time
 import Interfaz_resultados
 # me traigo cada objeto creado
 from class_Bolita import *
-
 from PyQt5.QtWidgets import *
 from PyQt5.QtCore import *
 from PyQt5.QtGui import *
