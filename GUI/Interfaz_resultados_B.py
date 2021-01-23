@@ -5,8 +5,9 @@
 
 
 from PyQt5 import QtWidgets
-from PyQt5.QtWidgets import (QApplication, QMainWindow, QTableWidget, QTableWidgetItem, QVBoxLayout,
-                             QHBoxLayout, QWidget, QLabel, QFrame)
+from PyQt5.QtWidgets import (QApplication, QMainWindow, QTableWidget,
+                             QTableWidgetItem, QVBoxLayout, QHBoxLayout,
+                             QWidget, QLabel, QFrame)
 from PyQt5.QtGui import QPainter, QPen, QBrush, QColor
 from PyQt5.QtCore import Qt
 import sys
@@ -104,3 +105,60 @@ class MyWindow(QMainWindow):
                 self.BR_ama += 1
 
         self.tableWidget.move(0, 0)
+
+    def createStat(self):
+        self.tbx = []
+        self.tbx.append(float(self.bol_time[0]))
+        for i in range(len(self.bol_time) - 1):
+            self.tbx.append(
+                (float(self.bol_time[i + 1]) - float(self.bol_time[i])))
+        self.tbx_med = round(sum(self.tbx) / (len(self.bol_time) - 1), 3)
+        # x/72 pasa de pixeles a pulgadas
+        self.V_med = round(
+            sum([x / y for x, y in zip(self.dist, self.bol_time_ver)]) / len(self.dist), 3)
+        print("distancia = ", [x for x in self.dist])
+        print("tiempo = ", self.bol_time_ver)
+
+        self.tp_ind = QLabel(str(self.bol_time[-1]))
+        self.tp_ind.setFrameStyle(QFrame.Panel | QFrame.Sunken)
+        self.tr_ind = QLabel(str(self.bol_time[0]))
+        self.tr_ind.setFrameStyle(QFrame.Panel | QFrame.Sunken)
+        self.tbx_ind = QLabel(str(self.tbx_med))
+        self.tbx_ind.setFrameStyle(QFrame.Panel | QFrame.Sunken)
+        self.BV_max_ind = QLabel(str(self.BV_max))
+        self.BV_max_ind.setFrameStyle(QFrame.Panel | QFrame.Sunken)
+        self.BR_tot_ind = QLabel(str(self.BR_tot))
+        self.BR_tot_ind.setFrameStyle(QFrame.Panel | QFrame.Sunken)
+        self.BR_roj_ind = QLabel(str(self.BR_roj))
+        self.BR_roj_ind.setFrameStyle(QFrame.Panel | QFrame.Sunken)
+        self.BR_ama_ind = QLabel(str(self.BR_ama))
+        self.BR_ama_ind.setFrameStyle(QFrame.Panel | QFrame.Sunken)
+        self.V_med_ind = QLabel(str(self.V_med))
+        self.V_med_ind.setFrameStyle(QFrame.Panel | QFrame.Sunken)
+
+        self.tp_lbl = QLabel("Tiempo del proceso")
+        self.tr_lbl = QLabel("Tiempo de reacción")
+        self.tbx_lbl = QLabel("Tiempo de intervalo medio")
+        self.BV_max_lbl = QLabel("Máximos aciertos consecutivos")
+        self.BR_tot_lbl = QLabel("Número de errores totales")
+        self.BR_roj_lbl = QLabel("Número de errores rojos")
+        self.BR_ama_lbl = QLabel("Número de errores amarillos")
+        self.V_med_lbl = QLabel("Velocidad promedio (pixel/s)")
+
+        self.statLayout = QVBoxLayout()
+        self.statLayout.addWidget(self.tp_lbl)
+        self.statLayout.addWidget(self.tp_ind)
+        self.statLayout.addWidget(self.tr_lbl)
+        self.statLayout.addWidget(self.tr_ind)
+        self.statLayout.addWidget(self.tbx_lbl)
+        self.statLayout.addWidget(self.tbx_ind)
+        self.statLayout.addWidget(self.BV_max_lbl)
+        self.statLayout.addWidget(self.BV_max_ind)
+        self.statLayout.addWidget(self.BR_tot_lbl)
+        self.statLayout.addWidget(self.BR_tot_ind)
+        self.statLayout.addWidget(self.BR_roj_lbl)
+        self.statLayout.addWidget(self.BR_roj_ind)
+        self.statLayout.addWidget(self.BR_ama_lbl)
+        self.statLayout.addWidget(self.BR_ama_ind)
+        self.statLayout.addWidget(self.V_med_lbl)
+        self.statLayout.addWidget(self.V_med_ind)
