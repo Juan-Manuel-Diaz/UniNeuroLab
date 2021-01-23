@@ -189,11 +189,11 @@ class MyWindow(QMainWindow):
 
         print("\n Estos objetos existen y son las bolitas")
         for i in range(len(self.bolitas)):
-            self.bolitas[i].t_Obj = self.bolitas[i].t_Obj(self)
-            self.bolitas[i].t_Obj.setGeometry(
+            self.bolitas[i].Obj = self.bolitas[i].t_Obj(self)
+            self.bolitas[i].Obj.setGeometry(
                 self.bolitas[i].g1, self.bolitas[i].g2, self.bolitas[i].g3, self.bolitas[i].g4)
-            self.bolitas[i].t_Obj.setStyleSheet(self.bolitas[i].setStyleSheet)
-            self.bolitas[i].t_Obj.clicked.connect(
+            self.bolitas[i].Obj.setStyleSheet(self.bolitas[i].setStyleSheet)
+            self.bolitas[i].Obj.clicked.connect(
                 lambda ch, val=i: self.cambioColor(val))
 
     def clicked(self):
@@ -270,7 +270,7 @@ class MyWindow(QMainWindow):
         global y_old
 
         if numero_estado1 + 1 == int(self.bolitas[i].valor):
-            self.bolitas[i].t_Obj.setStyleSheet(
+            self.bolitas[i].Obj.setStyleSheet(
                 "background-color: green; color: white; border-radius : 15; border : 1px solid green")
             for x, e in enumerate(tr):
                 if e == 1:
@@ -291,7 +291,7 @@ class MyWindow(QMainWindow):
         elif numero_estado1 < int(self.bolitas[i].valor):
             print("Color Rojo")
             tr[i] = 1
-            self.bolitas[i].t_Obj.setStyleSheet(
+            self.bolitas[i].Obj.setStyleSheet(
                 "background-color: red; color: white; border-radius : 15; border : 1px solid red")
 
         else:
@@ -311,7 +311,7 @@ class MyWindow(QMainWindow):
         global rango
 
         for i in range(len(self.bolitas)):
-            self.bolitas[i].t_Obj.setStyleSheet(self.bolitas[i].setStyleSheet)
+            self.bolitas[i].Obj.setStyleSheet(self.bolitas[i].setStyleSheet)
 
         numero_estado1 = 0
 
@@ -329,7 +329,7 @@ class MyWindow(QMainWindow):
 
         for i in range(len(self.bolitas)):
             self.bolitas[i].valor = str(n[i])
-            self.bolitas[i].t_Obj.setText(self.bolitas[i].valor)
+            self.bolitas[i].Obj.setText(self.bolitas[i].valor)
 
         print("el orden de bolitas es", n)
 

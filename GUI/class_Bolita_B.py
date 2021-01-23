@@ -54,6 +54,7 @@ class Bolitas():
         self.g3 = setGeometry[2] #Anchura
         self.g4 = setGeometry[3] #Altura
         self.t_Obj= QtWidgets.QPushButton
+        self.Obj = None
         self.id = id
         self.valor = valor # puede tomar valores del 1 al 25
         self.estado = estado   # puede tener 3 estados Blanca,  Verde o Roja
