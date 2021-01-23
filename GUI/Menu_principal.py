@@ -3,12 +3,13 @@
 
 # In[1]:
 
-from PyQt5.QtWidgets import (QApplication, QMainWindow, QVBoxLayout,
+from PyQt5.QtWidgets import (QApplication, QMainWindow, QVBoxLayout, QMenu,
                              QLabel, QLineEdit, QPushButton, QWidget, QAction)
 from PyQt5.QtCore import Qt
 from PyQt5.QtGui import QFont
 import sys
-import Interfaz_trazo
+import Interfaz_trazo_A
+import Interfaz_trazo_B
 
 
 class Login(QMainWindow):
@@ -86,18 +87,28 @@ class MainMenu(QMainWindow):
         lbl1.setFont(QFont('Arial', 25))
         lbl1.setAlignment(Qt.AlignCenter)
 
-        test_trazo = QAction("&Test del trazo", self)
+        test_trazo = QMenu("&Test del trazo", self)
         test_trazo.setStatusTip('Test del trazo que consiste en')
-        test_trazo.triggered.connect(lambda: self.interfaz_trazo(self.name))
+        test_trazo_a = QAction('Test del trazo &A', self)
+        test_trazo_b = QAction('Test del trazo &B', self)
+        test_trazo_a.triggered.connect(lambda: self.interfaz_trazo_a(self.name))
+        test_trazo_b.triggered.connect(lambda: self.interfaz_trazo_b(self.name))
+        test_trazo.addAction(test_trazo_a)
+        test_trazo.addAction(test_trazo_b)
+
         menubar = self.menuBar()
         testMenu = menubar.addMenu('&Tests')
-        testMenu.addAction(test_trazo)
+        testMenu.addMenu(test_trazo)
 
         layout.addWidget(lbl1)
         self.setLayout(layout)
 
-    def interfaz_trazo(self, name=None):
-        test = Interfaz_trazo.MyWindow()
+    def interfaz_trazo_a(self, name=None):
+        test = Interfaz_trazo_A.MyWindow()
+        test.show()
+
+    def interfaz_trazo_b(self, name=None):
+        test = Interfaz_trazo_B.MyWindow()
         test.show()
 
 
