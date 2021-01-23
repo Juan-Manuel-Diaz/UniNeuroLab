@@ -1,6 +1,5 @@
 #!/usr/bin/env python
 # coding: utf-8
-#Rama JuanRafaDani
 # In[1]:
 
 from PyQt5.QtWidgets import (QApplication, QMainWindow, QVBoxLayout,
