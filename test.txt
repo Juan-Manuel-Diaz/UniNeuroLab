@@ -1,4 +1,5 @@
-Configuración Básica
+HackatonC
+onfiguración Básica
 Configurar Nombre que salen en los commits
 
 	git config --global user.name "dasdo"
