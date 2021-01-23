@@ -25,6 +25,7 @@ class MyWindow(QMainWindow):
         self.bol_ini = ini
         self.bol_fin = fin
         self.bol_time = tim
+
         self.bol_time_ver = timv
         self.dist = dist
         self.centralwidget = QWidget()
@@ -51,9 +52,48 @@ class MyWindow(QMainWindow):
         self.tableWidget.setItem(0, 1, QTableWidgetItem("Bolita 2"))
         self.tableWidget.setItem(0, 2, QTableWidgetItem("Tiempo"))
 
-        orden = {'0': 0, 'A': 1, 'B': 2, 'C': 3, 'D': 4,
-                 'E': 5, 'F': 6, 'G': 7, 'H': 8, 'I': 9,
-                 'J': 10, 'K': 11, 'L': 12, 'M': 13}
+        orden = ['0', '1', 'A', '2', 'B', '3', 'C', '4', 'D', '5', 'E', '6',
+                 'F', '7', 'G', '8', 'H', '9', 'I', '10', 'J', '11', 'K', '12',
+                 'L', '13']
+
+        def pintar_verde():
+            self.tableWidget.item(
+                i + 1, 0).setBackground(QColor(0, 255, 0))
+            self.tableWidget.item(
+                i + 1, 1).setBackground(QColor(0, 255, 0))
+            self.tableWidget.item(
+                i + 1, 2).setBackground(QColor(0, 255, 0))
+
+            self.BV_act += 1
+
+            if self.BV_act > self.BV_max:
+                self.BV_max = self.BV_act
+
+        def pintar_rojo():
+            self.tableWidget.item(
+                i + 1, 0).setBackground(QColor(255, 0, 0))
+            self.tableWidget.item(
+                i + 1, 1).setBackground(QColor(255, 0, 0))
+            self.tableWidget.item(
+                i + 1, 2).setBackground(QColor(255, 0, 0))
+
+            self.BV_act = 0
+            self.BR_tot += 1
+            self.BR_roj += 1
+
+        def pintar_amarillo():
+            self.tableWidget.item(
+                i + 1, 0).setBackground(QColor(255, 255, 0))
+            self.tableWidget.item(
+                i + 1, 1).setBackground(QColor(255, 255, 0))
+            self.tableWidget.item(
+                i + 1, 2).setBackground(QColor(255, 255, 0))
+
+            if self.BV_act > self.BV_max:
+                self.BV_max = self.BV_act
+            self.BV_act = 0
+            self.BR_tot += 1
+            self.BR_ama += 1
 
         for i in range(len(self.bol_ini)):
             self.tableWidget.setItem(
@@ -63,48 +103,16 @@ class MyWindow(QMainWindow):
             self.tableWidget.setItem(
                 i + 1, 2, QTableWidgetItem(self.bol_time[i]))
 
-            if (int(self.bol_ini[i]) == orden.get(self.bol_fin[i]) or
-                    orden.get(self.bol_ini[i]) + 1 == int(self.bol_fin[i])):
-                self.tableWidget.item(
-                    i + 1, 0).setBackground(QColor(0, 255, 0))
-                self.tableWidget.item(
-                    i + 1, 1).setBackground(QColor(0, 255, 0))
-                self.tableWidget.item(
-                    i + 1, 2).setBackground(QColor(0, 255, 0))
-
-                self.BV_act += 1
-
-                if self.BV_act > self.BV_max:
-                    self.BV_max = self.BV_act
-
-            elif (int(self.bol_ini[i]) < orden.get(self.bol_fin[i]) or
-                    orden.get(self.bol_ini[i]) + 1 < int(self.bol_fin[i])):
-                self.tableWidget.item(
-                    i + 1, 0).setBackground(QColor(255, 0, 0))
-                self.tableWidget.item(
-                    i + 1, 1).setBackground(QColor(255, 0, 0))
-                self.tableWidget.item(
-                    i + 1, 2).setBackground(QColor(255, 0, 0))
-
-                self.BV_act = 0
-                self.BR_tot += 1
-                self.BR_roj += 1
-
+            if orden.index(self.bol_ini[i]) == orden.index(self.bol_fin[i]) - 1:
+                pintar_verde()
+            elif orden.index(self.bol_ini[i]) < orden.index(self.bol_fin[i]) - 1:
+                pintar_rojo()
             else:
-                self.tableWidget.item(
-                    i + 1, 0).setBackground(QColor(255, 255, 0))
-                self.tableWidget.item(
-                    i + 1, 1).setBackground(QColor(255, 255, 0))
-                self.tableWidget.item(
-                    i + 1, 2).setBackground(QColor(255, 255, 0))
-
-                if self.BV_act > self.BV_max:
-                    self.BV_max = self.BV_act
-                self.BV_act = 0
-                self.BR_tot += 1
-                self.BR_ama += 1
+                pintar_amarillo()
 
         self.tableWidget.move(0, 0)
+
+
 
     def createStat(self):
         self.tbx = []

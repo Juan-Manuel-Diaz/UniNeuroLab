@@ -13,9 +13,9 @@ import sys
 import numpy as np
 import math
 import time
-import Interfaz_resultados
+import Interfaz_resultados_A
 # me traigo cada objeto creado
-from class_Bolita import *
+from class_Bolita_A import *
 
 from PyQt5.QtWidgets import *
 from PyQt5.QtCore import *
@@ -258,7 +258,7 @@ class MyWindow(QMainWindow):
                                    self.resultado_mostrar(bol_ini, bol_fin, bol_time, bol_time_ver[1:], dist[1:]))
 
     def resultado_mostrar(self, ini, fin, tim, timv, dist):
-        self.in_res = Interfaz_resultados.MyWindow()
+        self.in_res = Interfaz_resultados_A.MyWindow()
         self.in_res.initUI(ini, fin, tim, timv, dist)
         self.in_res.show()
 
