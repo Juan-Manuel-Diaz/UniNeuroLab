@@ -13,6 +13,7 @@ import sys
 import numpy as np
 import time
 
+
 class MyWindow(QMainWindow):
     def __init__(self):
         super(MyWindow, self).__init__()
@@ -49,6 +50,10 @@ class MyWindow(QMainWindow):
         self.tableWidget.setItem(0, 1, QTableWidgetItem("Bolita 2"))
         self.tableWidget.setItem(0, 2, QTableWidgetItem("Tiempo"))
 
+        orden = {'a': 1, 'b': 2, 'c': 3, 'd': 4, 'e': 5,
+                 'f': 6, 'g': 7, 'h': 8, 'i': 9, 'j': 10,
+                 'k': 11, 'l': 12, 'm': 13}
+
         for i in range(len(self.bol_ini)):
             self.tableWidget.setItem(
                 i + 1, 0, QTableWidgetItem(self.bol_ini[i]))
@@ -57,7 +62,8 @@ class MyWindow(QMainWindow):
             self.tableWidget.setItem(
                 i + 1, 2, QTableWidgetItem(self.bol_time[i]))
 
-            if int(self.bol_ini[i]) == (int(self.bol_fin[i]) - 1):
+            if (int(self.bol_ini[i]) == orden[self.bol_fin[i]] or
+                    orden[self.bol_ini[i]] + 1 == int(self.bol_fin[i])):
                 self.tableWidget.item(
                     i + 1, 0).setBackground(QColor(0, 255, 0))
                 self.tableWidget.item(
@@ -70,7 +76,8 @@ class MyWindow(QMainWindow):
                 if self.BV_act > self.BV_max:
                     self.BV_max = self.BV_act
 
-            elif int(self.bol_ini[i]) < (int(self.bol_fin[i]) - 1):
+            elif (int(self.bol_ini[i]) < orden[self.bol_fin[i]] or
+                    orden[self.bol_ini[i]] + 1 < int(self.bol_fin[i])):
                 self.tableWidget.item(
                     i + 1, 0).setBackground(QColor(255, 0, 0))
                 self.tableWidget.item(
