@@ -13,13 +13,14 @@ import sys
 import numpy as np
 import math
 import time
-import Interfaz_resultados
+import Interfaz_resultados_B
 # me traigo cada objeto creado
-from class_Bolita import *
+from class_Bolita_B import *
 
 from PyQt5.QtWidgets import *
 from PyQt5.QtCore import *
 from PyQt5.QtGui import *
+
 
 # ahora tengo que meter estos objetos en MyWindow !!
 
@@ -161,11 +162,11 @@ class MyWindow(QMainWindow):
     def __init__(self):
         super(MyWindow, self).__init__()
         self.setGeometry(100, 100, 500, 530)
-        self.setWindowTitle("Nuestro Primer Test")
+        self.setWindowTitle("Test de trazo tipo B")
         # se crea el atributo "rango" para poder recorrer mejor cada bolita
         self.rango = ["b1", "b2", "b3", "b4", "b5"]
         self.bolitas = [b1, b2, b3, b4, b5, b6, b7, b8, b9, b10, b11, b12,
-                        b13, b14, b15, b16, b17, b18, b19, b20, b21, b22, b23, b24, b25]
+                        b13, bl1, bl2, bl3, bl4, bl5, bl6, bl7, bl8, bl9, bl10, bl11, bl12]
 
         self.initUI()
 
@@ -189,11 +190,11 @@ class MyWindow(QMainWindow):
 
         print("\n Estos objetos existen y son las bolitas")
         for i in range(len(self.bolitas)):
-            self.bolitas[i].t_Obj = self.bolitas[i].t_Obj(self)
-            self.bolitas[i].t_Obj.setGeometry(
+            self.bolitas[i].Obj = self.bolitas[i].t_Obj(self)
+            self.bolitas[i].Obj.setGeometry(
                 self.bolitas[i].g1, self.bolitas[i].g2, self.bolitas[i].g3, self.bolitas[i].g4)
-            self.bolitas[i].t_Obj.setStyleSheet(self.bolitas[i].setStyleSheet)
-            self.bolitas[i].t_Obj.clicked.connect(
+            self.bolitas[i].Obj.setStyleSheet(self.bolitas[i].setStyleSheet)
+            self.bolitas[i].Obj.clicked.connect(
                 lambda ch, val=i: self.cambioColor(val))
 
     def clicked(self):
@@ -258,7 +259,7 @@ class MyWindow(QMainWindow):
                                    self.resultado_mostrar(bol_ini, bol_fin, bol_time, bol_time_ver[1:], dist[1:]))
 
     def resultado_mostrar(self, ini, fin, tim, timv, dist):
-        self.in_res = Interfaz_resultados.MyWindow()
+        self.in_res = Interfaz_resultados_B.MyWindow()
         self.in_res.initUI(ini, fin, tim, timv, dist)
         self.in_res.show()
 
@@ -268,9 +269,12 @@ class MyWindow(QMainWindow):
         global dist
         global x_old
         global y_old
+        orden = ['0', '1', 'A', '2', 'B', '3', 'C', '4', 'D', '5', 'E', '6',
+                 'F', '7', 'G', '8', 'H', '9', 'I', '10', 'J', '11', 'K', '12',
+                 'L', '13']
 
-        if numero_estado1 + 1 == int(self.bolitas[i].valor):
-            self.bolitas[i].t_Obj.setStyleSheet(
+        if numero_estado1 + 1 == orden.index(self.bolitas[i].valor):
+            self.bolitas[i].Obj.setStyleSheet(
                 "background-color: green; color: white; border-radius : 15; border : 1px solid green")
             for x, e in enumerate(tr):
                 if e == 1:
@@ -288,21 +292,23 @@ class MyWindow(QMainWindow):
             bol_time_ver.append(
                 round((time.time() - inicio) - bol_time_ver[-1], 3))
 
-        elif numero_estado1 < int(self.bolitas[i].valor):
+        elif numero_estado1 < orden.index(self.bolitas[i].valor):
             print("Color Rojo")
             tr[i] = 1
-            self.bolitas[i].t_Obj.setStyleSheet(
+            self.bolitas[i].Obj.setStyleSheet(
                 "background-color: red; color: white; border-radius : 15; border : 1px solid red")
 
         else:
             print("Advertencia")
             print("Esta tecla ya se clickeó, vuelva a intentar")
 
-        bol_ini.append(str(numero_estado1))
+        bol_ini.append(str(orden[numero_estado1]))
         bol_fin.append(str(self.bolitas[i].valor))
         bol_time.append(str(round(time.time() - inicio, 3)))
-        if numero_estado1 + 1 == int(self.bolitas[i].valor):
+        if numero_estado1 + 1 == orden.index(self.bolitas[i].valor):
             numero_estado1 += 1
+
+
 
     def resetearColorTodos(self):
         global numero_estado1
@@ -311,7 +317,7 @@ class MyWindow(QMainWindow):
         global rango
 
         for i in range(len(self.bolitas)):
-            self.bolitas[i].t_Obj.setStyleSheet(self.bolitas[i].setStyleSheet)
+            self.bolitas[i].Obj.setStyleSheet(self.bolitas[i].setStyleSheet)
 
         numero_estado1 = 0
 
@@ -323,13 +329,26 @@ class MyWindow(QMainWindow):
     def bolilleroNumeros(self):
         global rango
         global n
-
+        
         rrango = np.arange(1, 26)
         n = np.random.permutation(rrango)
 
+        letras_o = ['A','B','C','D','E','F','G','H','I','J','K','L']
+
         for i in range(len(self.bolitas)):
-            self.bolitas[i].valor = str(n[i])
-            self.bolitas[i].t_Obj.setText(self.bolitas[i].valor)
+
+            if n[i] <= 13:
+                self.bolitas[i].valor = str(n[i])
+                self.bolitas[i].Obj.setText(self.bolitas[i].valor)
+
+            elif n[i] > 13:
+                self.bolitas[i].valor = str(letras_o[n[i]-14])
+                self.bolitas[i].Obj.setText(self.bolitas[i].valor)
+        
+        
+        
+
+     
 
         print("el orden de bolitas es", n)
 
@@ -372,7 +391,7 @@ numero_estado1 = 0
 tr = np.zeros(25, dtype='int8')
 ta = np.zeros(25, dtype='int8')
 
-# rango=["b1","b2","b3","b4","b5"]
+
 
 
 if(__name__ == '__main__'):
@@ -381,28 +400,7 @@ if(__name__ == '__main__'):
     win0.show()
     win = MyWindow()
     win.show()
+    print("La primere bolita tiene posicion", bl1.valor,"y su letra es: ", bl1.letra)
+    print("La 2 bolita tiene posicion", bl2.valor,"y su letra es: ", bl2.letra)
+    print("La 3 bolita tiene posicion", bl3.valor,"y su letra es: ", bl3.letra)
     sys.exit(app.exec())
-
-'''
-def window():
-    app = QApplication(sys.argv)
-    win1 = MyWindow1()
-    win1.show()  # esto llama a la superclase!!
-    
-    win2 = MyWindow2(b1)
-    win2.show()
-    win3 = MyWindow3()
-    win3.show()
-    
-    sys.exit(app.exec())
-
-app = QApplication([])       # Se inicializa la aplicacion
-window = MainApp()          # Se establece una ventana principal
-window.show()                   # se pide que muestre esta ventana
-app.exec_()                        # Ejecutamos la aplicacion 
-'''
-# In[ ]:
-
-
-# tiempo final= cuando apreta la bolita 25
-# boton terminar= gráficos

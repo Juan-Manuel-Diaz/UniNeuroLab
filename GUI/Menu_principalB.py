@@ -1,15 +1,13 @@
 #!/usr/bin/env python
 # coding: utf-8
-
 # In[1]:
 
-from PyQt5.QtWidgets import (QApplication, QMainWindow, QVBoxLayout, QMenu,
+from PyQt5.QtWidgets import (QApplication, QMainWindow, QVBoxLayout,
                              QLabel, QLineEdit, QPushButton, QWidget, QAction)
 from PyQt5.QtCore import Qt
 from PyQt5.QtGui import QFont
 import sys
-import Interfaz_trazo_A
-import Interfaz_trazo_B
+import Interfaz_trazoB
 
 
 class Login(QMainWindow):
@@ -50,7 +48,7 @@ class Login(QMainWindow):
         layout.addWidget(btn1)
         layout.addWidget(btn2)
 
-        self.setLayout(layout)
+        #self.setLayout(layout)  activar de nuevo
         self.show()
 
     def Anon_User(self):
@@ -87,28 +85,18 @@ class MainMenu(QMainWindow):
         lbl1.setFont(QFont('Arial', 25))
         lbl1.setAlignment(Qt.AlignCenter)
 
-        test_trazo = QMenu("&Test del trazo", self)
-        test_trazo.setStatusTip('Test del trazo que consiste en')
-        test_trazo_a = QAction('Test del trazo &A', self)
-        test_trazo_b = QAction('Test del trazo &B', self)
-        test_trazo_a.triggered.connect(lambda: self.interfaz_trazo_a(self.name))
-        test_trazo_b.triggered.connect(lambda: self.interfaz_trazo_b(self.name))
-        test_trazo.addAction(test_trazo_a)
-        test_trazo.addAction(test_trazo_b)
-
+        test_trazoB = QAction("&Test del trazo", self)
+        test_trazoB.setStatusTip('Test del trazo que consiste en')
+        test_trazoB.triggered.connect(lambda: self.interfaz_trazoB(self.name))
         menubar = self.menuBar()
         testMenu = menubar.addMenu('&Tests')
-        testMenu.addMenu(test_trazo)
+        testMenu.addAction(test_trazoB)
 
         layout.addWidget(lbl1)
         self.setLayout(layout)
 
-    def interfaz_trazo_a(self, name=None):
-        test = Interfaz_trazo_A.MyWindow()
-        test.show()
-
-    def interfaz_trazo_b(self, name=None):
-        test = Interfaz_trazo_B.MyWindow()
+    def interfaz_trazoB(self, name=None):
+        test = Interfaz_trazoB.MyWindow()
         test.show()
 
 
