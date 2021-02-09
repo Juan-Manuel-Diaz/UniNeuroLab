@@ -1,6 +1,9 @@
 #!/usr/bin/env python
 # coding: utf-8
+<<<<<<< HEAD
 
+=======
+>>>>>>> origin/EstructuraLab
 # In[1]:
 
 from PyQt5.QtWidgets import (QApplication, QMainWindow, QVBoxLayout,

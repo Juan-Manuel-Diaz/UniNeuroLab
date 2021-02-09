@@ -16,7 +16,10 @@ import time
 import Interfaz_resultados
 # me traigo cada objeto creado
 from class_Bolita import *
+<<<<<<< HEAD
 
+=======
+>>>>>>> origin/EstructuraLab
 from PyQt5.QtWidgets import *
 from PyQt5.QtCore import *
 from PyQt5.QtGui import *
@@ -372,7 +375,11 @@ numero_estado1 = 0
 tr = np.zeros(25, dtype='int8')
 ta = np.zeros(25, dtype='int8')
 
+<<<<<<< HEAD
 # rango=["b1","b2","b3","b4","b5"]
+=======
+
+>>>>>>> origin/EstructuraLab
 
 
 if(__name__ == '__main__'):
@@ -383,6 +390,7 @@ if(__name__ == '__main__'):
     win.show()
     sys.exit(app.exec())
 
+<<<<<<< HEAD
 '''
 def window():
     app = QApplication(sys.argv)
@@ -406,3 +414,7 @@ app.exec_()                        # Ejecutamos la aplicacion
 
 # tiempo final= cuando apreta la bolita 25
 # boton terminar= gráficos
+=======
+
+
+>>>>>>> origin/EstructuraLab
