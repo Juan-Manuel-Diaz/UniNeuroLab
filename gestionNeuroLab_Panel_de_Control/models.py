@@ -9,3 +9,5 @@ class APP_TableroControl(models.Model):
 	appsNumero=models.IntegerField(null= True,verbose_name= "ID de APPs")
 	appsBDnombres=models.CharField(blank=True, null= True,max_length=300, verbose_name="Bases de Datos de la APPs")
 	appsBDcantidad=models.IntegerField(null= True,verbose_name= "N°BD de la APPs")
+
+

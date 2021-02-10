@@ -1,0 +1,174 @@
+<!--Plantilla BASE_PANEL DE CONTROL-->
+
+
+<html>
+
+<head>
+
+	{% load static %}
+
+    <!-- Bootstrap -->
+    <link href="{% static 'gestionPanelControlAPP/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet"> 
+	
+     <!-- Fonts -->
+    
+     <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300&display=swap" rel="stylesheet"> 
+     <link href="https://fonts.googleapis.com/css?family=Lora:400,400i,700,700i" rel="stylesheet">
+     
+
+    <!-- Styles -->
+    <link href="{% static 'gestionPanelControlAPP/css/gestion.css' %}" rel="stylesheet">
+</head>
+
+<body>
+
+    <h1 style= "color: orange;" class="site-heading text-center text-black d-none d-lg-block">
+      
+        <span class="site-heading-lower">Laboratorio Universitario de Neurociencias y Neurotecnologias</span>
+      </h1>
+    
+ <!-- Navbar 2-->    
+ <nav class="navbar navbar-expand-lg navbar-white bg-light px-lg-4">
+  <a class="navbar-brand" href="{% url 'Home' %}">UniNeuroLab</a>
+  
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+		
+      <li class="nav-item {% if request.path == '/proyectos/' %}active{%  endif %} px-lg-4">
+        <a class="nav-link" href="{% url 'Proyectos' %}">Proyectos <span class="sr-only">(current)</span></a>
+      </li>
+        <li class="nav-item dropdown ">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Entornos
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item {% if request.path == '/entorno/' %}active{%  endif %}" href="{% url 'Entorno' %}">1. Equipo de Produccion</a>
+		  <div class="droprdown-divider"></div>		
+				<div class="dropdown-submenu" aria-labelledby="navbarDropdown">
+					<div class="dropdown-divider"></div>
+					<a class="dropdown-subitem {% if request.path == '/inputData/' %}active{%  endif %}" href="{% url 'INPUTDATA' %}">1.1.1 Toma de Datos InputData</a>
+					<div class="dropdown-divider"></div>
+					<a class="dropdown-subitem {% if request.path == '/inputEstudio/' %}active{%  endif %}" href="{% url 'INPUTESTUDIO' %}">1.1.2 Toma de Datos InputEstudio</a>
+					<div class="dropdown-divider"></div>
+					<a class="dropdown-subitem {% if request.path == '/inputParticipante/' %}active{%  endif %}" href="{% url 'INPUTPARTICIPANTE' %}">1.1.3 Toma de Datos InputParticipante</a>
+					<div class="dropdown-divider"></div>
+					<a class="dropdown-subitem {% if request.path == '/entorno/' %}active{%  endif %}" href="{% url 'Entorno' %}">1.2 Procesamiento de Datos</a>
+					<div class="dropdown-divider"></div>
+					<a class="dropdown-subitem {% if request.path == '/entorno' %}active{%  endif %}" href="{% url 'Entorno' %}">1.3 Dirección de Protocolos</a>
+				</div>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="#">2. Formacion de Recurso Humano</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="#">3. Edicion Cientifico-Tecnologica</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="#">4. Extension Universitaria</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="#">5. Innovacion Tecnológica</a>
+		  <div class="dropdown-divider"></div>
+		  <a class="dropdown-item" href="#">6. Vinculacion Institucional</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="#">7. Lineas de Investigacion</a>
+        </div>
+      </li>
+    
+      <li class="nav-item {% if request.path == '/servicios/' %}active{%  endif %} px-lg-4">
+        <a class="nav-link" href="{% url 'Servicios' %}">Servicios</a>
+      </li>
+       <li class="nav-item {% if request.path == '/pcmiembros/' %}active{%  endif %} px-lg-4">
+        <a class="nav-link" href="{% url 'Equipo' %}">Equipo</a>
+      </li>
+      
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Campos Neurociencias
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="#">Neurofisiologia</a>
+          <a class="dropdown-item" href="#">Neuroimagenes</a>
+          <a class="dropdown-item" href="#">Neuropsicofarmacologia</a>
+          <a class="dropdown-item" href="#">Neurodesarrollo Humano</a>
+          <a class="dropdown-item" href="#">Neuropsiquiatria</a>
+          <a class="dropdown-item" href="#">Neurogenomica</a>
+          <a class="dropdown-item" href="#">Neuropsicologia</a>
+          <a class="dropdown-item" href="#">Neuroinmunoendocrinologia</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="#">Lineas de Investigacion</a>
+        </div>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Campos Neurotecnologias
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+        
+          <a class="dropdown-item" href="#">Neurociencia computacional</a>
+          <a class="dropdown-item" href="#">Neuroinformatica</a>
+          <a class="dropdown-item" href="#">Interfaces Cerebro-Computadora</a>
+          <a class="dropdown-item" href="#">Optogenética</a>
+          <a class="dropdown-item" href="#">Epidemiologia Panorámica</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="#">Lineas de Investigacion</a>
+        </div>
+      </li>
+	  <li class="nav-item {% if request.path == '/pccontacto/' %}active{%  endif %} px-lg-4">
+        <a class="nav-link" href="{% url 'Contacto' %}">Contacto <span class="sr-only">(current)</span></a>
+      </li>
+    </ul>
+    <form class="form-inline my-2 my-lg-0">
+      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    </form>
+  </div>
+ </nav>
+
+	<!--Contenido Cambiante-->
+	{% block content %} 	
+	
+	
+	{% endblock %}
+   
+
+    <!-- Footer -->
+    <footer class="footer text-faded text-center py-5">
+      <div class="container">
+        <p class="m-0">
+	        <a href="#" class="link">
+	          <span class="fa-stack fa-lg">
+	            <i class="fa fa-circle fa-stack-2x"></i>
+	            <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+	          </span>
+	        </a>
+	        <a href="#" class="link">
+	          <span class="fa-stack fa-lg">
+	            <i class="fa fa-circle fa-stack-2x"></i>
+	            <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
+	          </span>
+	        </a>
+	        <a href="#" class="link">
+	          <span class="fa-stack fa-lg">
+	            <i class="fa fa-circle fa-stack-2x"></i>
+	            <i class="fa fa-instagram fa-stack-1x fa-inverse"></i>
+	          </span>
+	        </a>
+	    </p>
+        <p class="m-0 mbt">
+        	<a href="sample.html" class="link">Política de privacidad</a> ·
+        	<a href="sample.html" class="link">Aviso legal</a> ·
+        	<a href="sample.html" class="link">Cookies</a>
+		</p>
+        <p class="m-0 mbt1" style="color:yellow;">&copy; Laboratorio Universitario de Neurociencias y Neurotecnologias 2020</p>
+      </div>
+	</footer>
+
+    <!-- Bootstrap -->
+    <script src="{% static 'gestionPanelControlAPP/vendor/jquery/jquery.min.js'%}"></script>
+    <script src="{% static 'gestionPanelControlAPP/vendor/bootstrap/js/bootstrap.bundle.min.js'%}"></script>
+
+</body>
+
+
+</html>

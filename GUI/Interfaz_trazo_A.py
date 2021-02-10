@@ -14,9 +14,7 @@ import numpy as np
 import math
 import time
 import Interfaz_resultados_A
-# me traigo cada objeto creado
 from class_Bolita_A import *
-
 from PyQt5.QtWidgets import *
 from PyQt5.QtCore import *
 from PyQt5.QtGui import *
@@ -371,9 +369,6 @@ numero_estado1 = 0
 # control de errores
 tr = np.zeros(25, dtype='int8')
 ta = np.zeros(25, dtype='int8')
-
-# rango=["b1","b2","b3","b4","b5"]
-
 
 if(__name__ == '__main__'):
     app = QApplication(sys.argv)
