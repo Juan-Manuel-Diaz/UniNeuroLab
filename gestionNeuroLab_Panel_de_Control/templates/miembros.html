@@ -1,0 +1,17 @@
+{% extends "basePC.html" %}
+
+{% load static %}
+
+{% block content %}
+	{% for miembros in totalmiembros %}
+
+<h2 style= "color: yellow">{{totalmiembros.miembNombre}}</h2>
+
+<p>{{totalmiembros.miembRoll}}</p>
+<p><img src="{{totalmiembros.miembImagen.url}}"></p>
+
+	{% endfor %}
+	
+<h3 style= "color: yellow">ESTOS SON LOS MIEMBROS DEL LAB, aca tengo que vincular con la base de datos!!</h3>
+	
+{% endblock %}

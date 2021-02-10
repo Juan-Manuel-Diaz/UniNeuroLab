@@ -14,9 +14,7 @@ import numpy as np
 import math
 import time
 import Interfaz_resultados_A
-# me traigo cada objeto creado
 from class_Bolita_A import *
-
 from PyQt5.QtWidgets import *
 from PyQt5.QtCore import *
 from PyQt5.QtGui import *
@@ -274,7 +272,7 @@ class MyWindow(QMainWindow):
                 "background-color: green; color: white; border-radius : 15; border : 1px solid green")
             for x, e in enumerate(tr):
                 if e == 1:
-                    self.bolitas[x].t_Obj.setStyleSheet(
+                    self.bolitas[x].Obj.setStyleSheet(
                         self.bolitas[x].setStyleSheet)
                     tr[x] = 0
 
@@ -371,9 +369,6 @@ numero_estado1 = 0
 # control de errores
 tr = np.zeros(25, dtype='int8')
 ta = np.zeros(25, dtype='int8')
-
-# rango=["b1","b2","b3","b4","b5"]
-
 
 if(__name__ == '__main__'):
     app = QApplication(sys.argv)

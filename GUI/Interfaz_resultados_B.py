@@ -122,8 +122,10 @@ class MyWindow(QMainWindow):
                 (float(self.bol_time[i + 1]) - float(self.bol_time[i])))
         self.tbx_med = round(sum(self.tbx) / (len(self.bol_time) - 1), 3)
         # x/72 pasa de pixeles a pulgadas
+
         self.V_med = round(
             sum([x / y for x, y in zip(self.dist, self.bol_time_ver)]) / len(self.dist), 3)
+
         print("distancia = ", [x for x in self.dist])
         print("tiempo = ", self.bol_time_ver)
 
