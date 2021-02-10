@@ -272,7 +272,7 @@ class MyWindow(QMainWindow):
                 "background-color: green; color: white; border-radius : 15; border : 1px solid green")
             for x, e in enumerate(tr):
                 if e == 1:
-                    self.bolitas[x].t_Obj.setStyleSheet(
+                    self.bolitas[x].Obj.setStyleSheet(
                         self.bolitas[x].setStyleSheet)
                     tr[x] = 0
 
