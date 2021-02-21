@@ -6,11 +6,11 @@
 	<body>
 		<p> Estas buscando: <strong>{{query}}</strong></p>
 		
-		{% if estudioBDrecuperado %}
+		{% if estudios %}
 		
-			<p>Estudios encontrados: {{ estudioBDrecuperado|length}} estudios</p>
+			<p>Estudios encontrados: {{ estudios|length}} estudios</p>
 			<ul>
-				{% for e in estudioBDrecuperado %}
+				{% for e in estudios %}
 					<li>
 						{{e.nombre}}
 					</li>
